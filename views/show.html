@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+  <div class="text-left">
+    <h1>{{title}}</h1>
+    <p class="lead"> {{body|marked}} </p>
+    <p class="lead">Tags: 
+    	
+          {% for tag in tags %}
+            <li><a href='/filter/{{tag}}'>{{tag}}</a></li>
+          {% endfor %}
+      </br>
+      
+    <form action='/modifyTags' method='post'>
+  		<div class="form-group">
+    		<label for="changeTags">TAGS</label>
+    	<input type="input" class="form-control" name="changeTags" placeholder="Enter new tags" value="{{tags}}">
+    	<input type="hidden" name="title" value="{{title}}">
+  		</div>
+		<button type="submit" class="btn btn-default">Change/Add</button>
+	</form>
+    
+
+   </p>
+      
+    
+  </div>
+  
+</div><!-- /.container -->
+
+
+
+
+{% endblock %}

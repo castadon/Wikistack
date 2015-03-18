@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+ 
+
+<div class="container">
+  <div class="text-left">
+    <h1>BROWSE MY {{title}}</h1>
+    <p class="lead"> {{title}} </p>
+    
+      {% if docs.length > 0 %}
+        <ul>
+          {% for doc in docs %}
+            <li>{{doc|page_link}}</li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        There are no pages. Why don't you <a href='/add'>add one</a>?
+      {% endif %}
+    
+  </div>
+  <form action='/filter' method='post'>
+  <div class="form-group">
+    <label for="filter">Filter Tags (only one)</label>
+    <input type="input" class="form-control" name="filter" placeholder="filter">
+  <button type="submit" class="btn btn-default">Filter</button>
+  </div>
+</form>
+  
+</div><!-- /.container -->
+    
+ 
+{% endblock %}
